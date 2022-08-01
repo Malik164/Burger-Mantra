@@ -1,0 +1,49 @@
+.topBun {
+    height: 100px;
+    border-radius: 900px 900px 10px 10px;
+    background: linear-gradient(#bc581e, #e27b36);
+    border-top: 9px solid #bc581e;
+}
+
+.lettuce {
+    border-radius: 8px;
+    background-color: #80D041;
+    height: 25px;
+    border-bottom: 3px solid #0F6D12;
+}
+
+.tomato {
+    border-radius: 14px;
+    background-color: #F13233;
+    height: 30px;
+    border-bottom: 5px solid #940C0E;
+}
+
+.onion {
+    border-radius: 8px;
+    background-color: #B95381;
+    height: 23px;
+    border-bottom: 4px solid #7E1846;
+}
+
+.cheese {
+    background-color: #E8EA02;
+    border-radius: 10px;
+    height: 35px;
+    border-bottom: 5px solid #EAB902;
+}
+
+.beef {
+    border-radius: 15px;
+    background-color: #603102;
+    height: 40px;
+    border-bottom: 16px solid #402408;
+}
+
+.bottomBun {
+    background: linear-gradient(#bc581e, #e27b36);
+    border-top: 11px solid #bc581e;
+    border-radius: 10px 10px 50px 50px;
+    height: 90px;
+    margin-top: 5px;
+}

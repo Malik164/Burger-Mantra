@@ -1,0 +1,88 @@
+.step-progress-bar{
+    --accent-color:#43cc29;
+    --body-color:#d9e3f1;
+   
+    margin: 1em auto;
+    margin-bottom:1em;
+}
+.step-wrappers{
+    width: 90%;
+    max-width: 40rem;
+    margin: auto;
+}
+.step-progress-bar ul {
+    list-style: none;
+    counter-reset: step;
+    position: relative;
+    text-align: center;
+    display: flex;
+}
+.step-progress-bar li{
+    /* width: 50%; */
+    flex:1;
+    text-align: center;
+    position: relative;
+    margin-bottom:1em;
+}
+.step-progress-bar ul li::before{
+    width: 30px;
+    text-align: center;
+    margin: 0 auto .5em auto;
+    font-size: 1.3rem;
+    background-color: var(--body-color);
+    height: 30px;
+    border: 2px solid rgb(198 210 220);
+    border-radius: 50%;
+    content: counter(step);
+    display: block;
+    counter-increment: step;
+}
+
+.step-progress-bar ul li::after{
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    top: 15px;
+    left: -50%;
+    z-index: -1;
+    content: '';
+    background-color: rgb(198 210 220);
+}
+.step-progress-bar ul li:first-child::after{
+    width: 0%;
+}
+.step-progress-bar ul li.active::before{
+    color: #fff;
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+}
+.step-progress-bar ul li.active::after{
+    background-color: var(--accent-color);
+}
+.step{
+    transition: all 300ms ease-in;
+    display: none;
+}
+.step.show{
+    display: block;
+}
+
+/* payments card
+ */
+ .custom-border{
+     cursor: pointer;
+     border-radius: 2em 0 2em 0;
+     padding: 2em 0 .5em 0;
+     transition: all 300ms ease;
+     margin: 0 .5em;
+     box-shadow:3px 5px 5px rgba(0, 0, 0, 0.16);
+     background-color: rgba(255, 255, 255, 0.761);
+ }
+
+ .custom-border:hover{
+    transform: translateY(-1em);
+ }
+ .custom-border.active .custom-icon{
+     color: #43cc29;
+ }
+ 
