@@ -3,9 +3,9 @@ import { connect } from "react-redux"
 import { Navigate } from "react-router"
 import * as actionCreator from "../../store"
 
-const Logout=(props)=>{
+const Logout=({onSignOut})=>{
     useEffect(()=>{
-        props.onSignOut()
+        onSignOut()
         //eslint-disable-next-line
     },[])
     return(
@@ -13,6 +13,6 @@ const Logout=(props)=>{
     )
 }
 const mapDispatchToProps=dispatch=>({
-    onSignOut:()=>dispatch(actionCreator.signOut())
+    onSignOut:()=>dispatch(actionCreator.clearStorage())
 })
 export default connect(null,mapDispatchToProps)(Logout)

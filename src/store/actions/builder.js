@@ -1,5 +1,4 @@
 import * as actionType from "../actionTypes"
-import axios from "../../components/OrderAxios/OrderAxios"
 
 export const changeIngredient=(ingredient,kind)=>{
     return{
@@ -26,19 +25,7 @@ export const resetPrice=()=>({
 
 // now fetch the ingredients from firebase database
 export const fetchIngredientsAsync=()=>{
-    return dispatch=>{
-        axios.get('/ingredients.json').then(response=>{
-            let ingredients=response.data
-            let ingsOrdered={
-                cheese:ingredients.cheese,
-                lettuce:ingredients.lettuce,
-                beef:ingredients.beef,
-                tomato:ingredients.tomato,
-                onion:ingredients.onion,
-            }
-            dispatch(fetchIngredientSuccess(ingsOrdered))
-        }).catch(e=>{
-            dispatch(fetchIngredientfail(e.message))
-        })
+    return {
+        type:actionType.FETCH_INGREDIENTS_START
     }
 }

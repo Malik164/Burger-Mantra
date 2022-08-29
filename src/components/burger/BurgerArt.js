@@ -1,3 +1,4 @@
+import { memo } from "react"
 import Ingredient from "./ingredient/Ingredient"
 
 const BurgerArt = props => {
@@ -19,4 +20,4 @@ const BurgerArt = props => {
     )
 }
 
-export default BurgerArt
+export default memo(BurgerArt)

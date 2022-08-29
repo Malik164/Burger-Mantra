@@ -1,3 +1,4 @@
+import { memo } from "react"
 import Input from "./Input"
 const CustomeForm = props => {
     // convert the receiving object to array  so that I can map them
@@ -30,5 +31,4 @@ const CustomeForm = props => {
 
     )
 }
-
-export default CustomeForm
+export default memo(CustomeForm)

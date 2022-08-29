@@ -1,6 +1,4 @@
 import * as actionTypes from "../actionTypes"
-import axios from "../../components/OrderAxios/OrderAxios"
-import {resetPrice} from "../actions/builder"
 
 ///------------- placing order---------------------
 export const placingOrderInit=()=>({
@@ -22,18 +20,10 @@ export const purchasingInit=()=>({
 
 //-- placing the order asynchronusly----------
 export const placingOrderAsync=(orderData)=>{
-    return (dispatch,getState)=>{
-        dispatch(placingOrderInit())
-        const {auth:{token,userId}}=getState()
-        // here we pass the current logged user to the firebase
-        orderData.userId=userId
-        axios.post(`/orders.json?auth=${token}`,orderData).then(res=>{
-        dispatch(placingOrderSuccess())
-        dispatch(resetPrice())
-    }).catch(e=>{
-        dispatch(placingOrderFail(e.message))
-    })
-}
+   return{
+        type:actionTypes.PLACE_ORDER_START,
+        orderData
+   }
 }
 
 export const errorNoticed=()=>({type:actionTypes.ERROR_NOTICED})
@@ -51,19 +41,6 @@ export const fetchOrderFail=(error)=>({
     error
 })
 // fetching order asynchronusly
-export const fetchOrderAsync=()=> (dispatch,getState)=>{
-    dispatch(fethOrderInit())
-    let {auth:{token,userId}}=getState()
-    axios.get(`/orders.json?auth=${token}&orderBy="userId"&equalTo="${userId}"`).then((response)=>{
-        if (response.data) {
-            
-            const orders= Object.keys(response.data).map(key =>response.data[key])
-            return dispatch(fetchOrderSuccess(orders))
-        }
-        
-        dispatch(fetchOrderSuccess([]))
-    }).catch(e=>{
-        console.log(e);
-        dispatch(fetchOrderFail(e.message))
-    })
-}
+export const fetchOrderAsync=()=>({
+    type:actionTypes.FETCH_ORDER_START
+})

@@ -1,6 +1,6 @@
 import Button from "./Button"
 import pic from "../assets/cash-on-delivery.png"
-
+import { memo } from "react"
 import GooglePayment from "./GooglePayment/GooglePayment"
 import { motion } from "framer-motion"
 const containerVariants={
@@ -108,4 +108,4 @@ const PaymentMethod = props => {
     )
 }
 
-export default PaymentMethod
+export default memo(PaymentMethod)

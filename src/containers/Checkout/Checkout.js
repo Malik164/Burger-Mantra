@@ -12,6 +12,8 @@ import BackDrop from "../../components/modal/BackDrop";
 import { checkValidity } from "../../store/utility";
 import * as actionCreator from "../../store/index"
 export const Checkout = props => {
+    const ingredients=props.ingredients
+
     const multiStep = useRef()
     const progressBar = useRef()
     const navigate = useNavigate()
@@ -139,8 +141,8 @@ export const Checkout = props => {
     useEffect(() => {
         // make ingredients object and price
         let count = 0
-        for (const key in props.ingredients) {
-            count += +props.ingredients[key]
+        for (const key in ingredients) {
+            count += +ingredients[key]
         }
         if (count === 0) {
             setDisableOrder(true)
@@ -148,7 +150,7 @@ export const Checkout = props => {
         
         
         //eslint-disable-next-line
-    }, [props.ingredients])
+    }, [ingredients])
     
     // for first render
     useEffect(() => {
@@ -233,7 +235,7 @@ export const Checkout = props => {
         }
         customer.PaymentMethod = method
         const reqObj = {
-            ingredients: props.ingredients,
+            ingredients: ingredients,
             customer,
             price
         }
@@ -333,7 +335,7 @@ export const Checkout = props => {
                             </h3>
                             <div className="burger-wrapper custom-height">
                                 {
-                                    props.ingredients ? <BurgerArt ingredients={props.ingredients} /> :
+                                    ingredients ?  <BurgerArt ingredients={ingredients} /> :
                                         <Navigate to='/' />
                                 }
                             </div>
@@ -359,11 +361,9 @@ export const Checkout = props => {
                         >
                             <form action="" className="rounded  bg-transparent" noValidate>
 
-                                <CustomeForm
+                                    <CustomeForm
                                     formData={formData}
-                                    
-                                    inputChangeHandler={inputChangeHandler}
-                                />
+                                    inputChangeHandler={inputChangeHandler}/>
                                 <div className="text-center">
                                     <Button
                                         clicked={e => {
